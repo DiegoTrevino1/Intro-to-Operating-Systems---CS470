@@ -1,13 +1,10 @@
 CC = gcc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -std=c11
 
-TARGET = Lab2
-SRC = Lab2.c
+all: myshell
 
-all:$(TARGET)
-
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+myshell: myshell.c
+	$(CC) $(CFLAGS) myshell.c -o myshell
 
 clean:
-	rm -f $(TARGET)
+	rm -f myshell
