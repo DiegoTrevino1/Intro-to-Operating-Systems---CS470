@@ -1,13 +1,16 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -O2
+CFLAGS = -Wall -Wextra -std=c11 -g
 
-all: sjf rr
+APP = diego_testapp
+OBJS = Diego_testFC.o Diego_libFC.o
 
-sjf: sjf.c
-	$(CC) $(CFLAGS) -o sjf sjf.c
+all: $(APP)
 
-rr: rr.c
-	$(CC) $(CFLAGS) -o rr rr.c
+$(APP): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f sjf rr *.o
+	rm -f *.o $(APP)
