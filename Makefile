@@ -1,16 +1,11 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11 -g
+CFLAGS = -Wall -Wextra -std=c11
+TARGET = paging_translator
 
-APP = diego_testapp
-OBJS = Diego_testFC.o Diego_libFC.o
+all: $(TARGET)
 
-all: $(APP)
-
-$(APP): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS)
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(TARGET): paging_translator.c
+	$(CC) $(CFLAGS) -o $(TARGET) paging_translator.c
 
 clean:
-	rm -f *.o $(APP)
+	rm -f $(TARGET)
